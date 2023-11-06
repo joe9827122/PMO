@@ -1,0 +1,29 @@
+{
+    "version": 1, 
+    "disable_existing_loggers" : false,
+    "formatters": {
+        "normal" :{
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        },
+        "simple":{
+            "format":"%(asctime)s - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers" :{
+        "time-rotating-file":{
+            "class":"logging.handlers.TimedRotatingFileHandler",
+            "filename":"log\\timerotate.log",
+            "when":"midnight",
+            "backupCount":7,
+            "formatter":"simple",
+            ".": {"suffix":"%Y%m%d"}
+        }
+    },
+    "loggers":{
+        "time-f":{
+            "handlers":["time-rotating-file"],
+            "level":"INFO",
+            "propagate":true    
+        }
+    }
+}
